@@ -1,0 +1,86 @@
+%%#!lualatex
+%%#BIBTEX upbibtex jecon-tategaki
+
+% Author:	       Shiro Takeda
+% First-written:       <2002/11/02>
+%
+%############################## Main #################################
+
+% クラスファイルに jlreq を利用。
+% upLaTeX でコンパイルする。
+% uplatex を使う場合は plautopatch パッケージを読み込んでおく。
+
+\documentclass[article,tate,landscape]{jlreq}
+
+%% 以下は lualatex 用の設定。
+\usepackage[no-math]{fontspec}
+\usepackage{luatexja-fontspec}
+\usepackage{luatexja-preset}
+
+%% natbib.sty を使う。
+\usepackage[longnamesfirst]{natbib}
+\usepackage{newtxtext,newtxmath}
+\usepackage{color}
+\definecolor{MyBrown}{rgb}{0.3,0,0}
+\definecolor{MyBlue}{rgb}{0,0,0.3}
+\definecolor{MyRed}{rgb}{0.6,0,0.1}
+\definecolor{MyGreen}{rgb}{0,0.4,0}
+\usepackage[%
+bookmarks=true,%
+bookmarksnumbered=true,%
+colorlinks=true,%
+linkcolor=MyBlue,%
+citecolor=MyRed,%
+filecolor=MyBlue,%
+urlcolor=MyGreen%
+]{hyperref}
+
+\bibpunct{\hskip-0.5em（}{）\hskip-0.5em}{}{}{}{}
+
+%#####################################################################
+%######################### Document Starts ###########################
+%#####################################################################
+\begin{document}
+
+\verb|\bibliographystyle| に \verb|jecon-tategaki.bst| を指定したもの。
+\vspace*{1em}
+
+クラスファイルに \texttt{jlreq} クラスを利用し、LaTeX エンジンに
+\texttt{lualatex}、BibTeX エンジンに \texttt{upbibtex} を使っています。
+
+\vspace*{1em}
+
+また、プリアンプルで
+\begin{verbatim}
+        \bibpunct{\hskip-0.5em（}{）\hskip-0.5em}{}{}{}{}
+\end{verbatim}
+と設定し、引用部分の括弧を全角に変更し、さらにスペースを調整している。こ
+うしないと引用部分で半角括弧が利用されるため、少し見た目がぶかっこうにな
+る。
+
+\vspace*{1em}
+
+引用例を4つ。\citet{ishikawa03:_green_gas_emiss_contr_open_econom}、
+\citet{takeda06:_cge_analy_welfar_effec_trade} は英語の論文。
+\citet{oyama99:_mark_stru}  \citet{kuroda97jp:keo} は日本語の論文。
+
+\nocite{*}
+
+%% BibTeX スタイルファイルの指定。
+\bibliographystyle{jecon-tategaki}
+
+%% BibTeX データベースファイルの指定。
+%
+% 一個上のフォルダにある jecon-example.bib, jecon-example-unicode.bib を指定。
+\bibliography{../jecon-example,../jecon-example-unicode}
+
+\end{document}
+
+%#####################################################################
+%######################### Document Ends #############################
+%#####################################################################
+% </pre></body></html>
+% --------------------
+% Local Variables:
+% fill-column: 80
+% End:

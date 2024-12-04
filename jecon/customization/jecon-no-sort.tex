@@ -1,0 +1,68 @@
+%#!lualatex
+%#BIBTEX upbibtex jecon-no-sort
+
+% Author:	       Shiro Takeda
+% First-written:       <2002/11/02>
+%
+%############################## Main #################################
+
+%% jlreq クラスを利用
+\documentclass[article]{jlreq}
+
+%% 以下は lualatex 用の設定。
+\usepackage[no-math]{fontspec}
+\usepackage{luatexja-fontspec}
+\usepackage{luatexja-preset}
+
+%% natbib.sty を使う。
+\usepackage{natbib}
+\usepackage{newtxtext,newtxmath}
+\usepackage{color}
+\definecolor{MyBrown}{rgb}{0.3,0,0}
+\definecolor{MyBlue}{rgb}{0,0,0.3}
+\definecolor{MyRed}{rgb}{0.6,0,0.1}
+\definecolor{MyGreen}{rgb}{0,0.4,0}
+\usepackage[%
+bookmarks=true,%
+bookmarksnumbered=true,%
+colorlinks=true,%
+linkcolor=MyBlue,%
+citecolor=MyRed,%
+filecolor=MyBlue,%
+urlcolor=MyGreen%
+]{hyperref}
+
+%#####################################################################
+%######################### Document Starts ###########################
+%#####################################################################
+\begin{document}
+
+\verb|\bibliographystyle| に \verb|jecon-no-sort.bst| を指定したもの。
+引用された順番で参考文献が作成される．
+\vspace*{1em}\\
+
+\input{cited-part}
+
+\input{cited-part-unicode}
+
+\nocite{*}
+
+%% BibTeX スタイルファイルの指定。
+\bibliographystyle{jecon-no-sort}
+
+%% BibTeX データベースファイルの指定。
+%
+% 一個上のフォルダにある jecon-example.bib, jecon-example-unicode.bib を指定。
+\bibliography{../jecon-example,../jecon-example-unicode}
+
+\end{document}
+
+
+%#####################################################################
+%######################### Document Ends #############################
+%#####################################################################
+% </pre></body></html>
+% --------------------
+% Local Variables:
+% fill-column: 80
+% End:

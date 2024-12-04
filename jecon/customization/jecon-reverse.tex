@@ -1,0 +1,80 @@
+%#!lualatex
+%#BIBTEX upbibtex jecon-reverse
+
+% Author:	       Shiro Takeda
+% First-written:       <2014/01/23>
+%
+%############################## Main #################################
+
+%% jlreq クラスを利用
+\documentclass[article]{jlreq}
+
+%% 以下は lualatex 用の設定。
+\usepackage[no-math]{fontspec}
+\usepackage{luatexja-fontspec}
+\usepackage{luatexja-preset}
+
+%% natbib.sty を使う。
+\usepackage{natbib}
+\usepackage{newtxtext,newtxmath}
+\usepackage{color}
+\definecolor{MyBrown}{rgb}{0.3,0,0}
+\definecolor{MyBlue}{rgb}{0,0,0.3}
+\definecolor{MyRed}{rgb}{0.6,0,0.1}
+\definecolor{MyGreen}{rgb}{0,0.4,0}
+\usepackage[%
+bookmarks=true,%
+bookmarksnumbered=true,%
+colorlinks=true,%
+linkcolor=MyBlue,%
+citecolor=MyRed,%
+filecolor=MyBlue,%
+urlcolor=MyGreen%
+]{hyperref}
+
+%#####################################################################
+%######################### Document Starts ###########################
+%#####################################################################
+\begin{document}
+
+\verb|\bibliographystyle|に\verb|jecon-reverse.bst|を指定し、
+\verb|\bibliography|に\verb|jecon-example-old.bib|を指定。
+\vspace{1em}\\
+
+普通、\verb|bib|ファイルでは日本人名は「姓 名」という形で名前を指定するが、
+\verb|jecon.bst| では日本人名についても外国人名と同じように「姓, 名」という形式で
+指定する必要がある。ただし、これまでの伝統的な記述方法も使えるようになっている。
+\verb|jecon-example-old.bib|では通常の bib ファイルのように「姓 名」という形式で
+著者名が記述されている。そのような \verb|bib|ファイルでも適切扱う設定にしている
+のが \verb|jecon-reverse.bst|。
+\begin{itemize}
+ \item 注: \verb|bst.sei.mei.order| という関数の中身を書き換えている以外は
+       \verb|jecon.bst| と同じです。
+\end{itemize}
+
+\vspace{2em}
+
+\input{cited-part}
+
+\nocite{*}
+
+%% BibTeX スタイルファイルの指定。
+\bibliographystyle{jecon-reverse}
+% \bibliographystyle{jecon-new}
+
+%% BibTeX データベースファイルの指定。
+%
+% 一個上のフォルダにある jecon-example-old.bib を指定。
+\bibliography{../jecon-example-old}
+
+\end{document}
+
+%#####################################################################
+%######################### Document Ends #############################
+%#####################################################################
+% </pre></body></html>
+% --------------------
+% Local Variables:
+% fill-column: 80
+% End:
+

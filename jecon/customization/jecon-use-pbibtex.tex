@@ -1,0 +1,70 @@
+%%#!platex -kanji=uft-8
+%%#BIBTEX pbibtex -kanji=utf-8 jecon-use-pbibtex
+
+% Author:	       Shiro Takeda
+% First-written:       <2002/11/02>
+%
+%############################## Main #################################
+% クラスファイル → jsarticle を利用。
+% jsarticle ではエンジンを指定する → ここでは platex でコンパイル。
+% platex を使う場合は plautopatch パッケージを読み込んでおく。
+\RequirePackage{plautopatch}
+\documentclass[platex]{jsarticle}
+
+%% natbib.sty を使う。
+\usepackage{natbib}
+\usepackage{newtxtext,newtxmath}
+\usepackage{color}
+\definecolor{MyBrown}{rgb}{0.3,0,0}
+\definecolor{MyBlue}{rgb}{0,0,0.3}
+\definecolor{MyRed}{rgb}{0.6,0,0.1}
+\definecolor{MyGreen}{rgb}{0,0.4,0}
+\usepackage[dvipdfm,
+bookmarks=true,%
+bookmarksnumbered=true,%
+colorlinks=true,%
+linkcolor=MyBlue,%
+citecolor=MyRed,%
+filecolor=MyBlue,%
+urlcolor=MyGreen%
+]{hyperref}
+
+%#####################################################################
+%######################### Document Starts ###########################
+%#####################################################################
+\begin{document}
+
+これは \LaTeX のエンジンとして \texttt{platex}、\BibTeX のエンジンとして
+\texttt{pbibtex} を使うケース。
+\begin{itemize}
+ \item \verb|\bibliographystyle| には \verb|jecon-pbibtex.bst| を指定している。
+ \item ユニコード文字を含む文献は利用していない。
+\end{itemize}
+
+
+\vspace{1em}
+
+\input{cited-part}
+
+\nocite{*}
+
+%% BibTeX スタイルファイルの指定。
+%
+% 一個上のフォルダにある jecon.bst を指定。
+\bibliographystyle{jecon-pbibtex}
+
+%% BibTeX データベースファイルの指定。
+%
+% 一個上のフォルダにある jecon-example.bib を指定。
+\bibliography{../jecon-example}
+
+\end{document}
+
+%#####################################################################
+%######################### Document Ends #############################
+%#####################################################################
+% </pre></body></html>
+% --------------------
+% Local Variables:
+% fill-column: 80
+% End:
